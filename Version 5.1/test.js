@@ -1844,7 +1844,7 @@ const brands = [...new Set([...products.map(p => p.brand)])];
 console.log(brands);
 
 const val = brands.map(b => ({
-    value: b.split(' ').join('-').toLowerCase(),
+    value: b,
     label: b.split('-').join(' '),
     checked: false
 }));
