@@ -38,4 +38,3 @@ server.get('/', (req, res) => {
 server.listen(8080, () => {
     console.log(`-- SERVER STARTED AT ${8080} PORT SUCCESSFULLY --`);
 });
-
