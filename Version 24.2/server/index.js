@@ -138,12 +138,12 @@ server.use(express.json());
 
 // Routes
 server.use('/products', isAuth(), productRouter.routes);
-server.use('/brands', brandRouter.routes);
-server.use('/categories', categoryRoutes.routes);
-server.use('/users', userRoutes.routes);
+server.use('/brands', isAuth(), brandRouter.routes);
+server.use('/categories', isAuth(), categoryRoutes.routes);
+server.use('/users', isAuth(), userRoutes.routes);
 server.use('/auth', authRoutes.routes);
-server.use('/cart', cartRoutes.routes);
-server.use('/orders', orderRoutes.routes);
+server.use('/cart', isAuth(), cartRoutes.routes);
+server.use('/orders', isAuth(), orderRoutes.routes);
 
 
 // DB CONNECT
