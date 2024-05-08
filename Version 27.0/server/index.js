@@ -26,7 +26,7 @@ const { isAuth, sanitizeUser, cookieExtractor } = require('./services/common');
 const SECRET_KEY = 'TOP_SECRET';
 
 // JWT Token authentication
-var opts = {}
+const opts = {}
 opts.jwtFromRequest = cookieExtractor;
 opts.secretOrKey = SECRET_KEY;
 
@@ -77,7 +77,8 @@ passport.use(
                         else {
                             const token = jwt.sign(sanitizeUser(user), SECRET_KEY);
                             console.log("~ Logged in a user!");
-                            return done(null, token);
+                            console.log("~ User token:", token);
+                            return done(null, { id: user.id, role: user.role });
                             // res.status(200).json({ id: user.id, name: user.name, email: user.email, addresses: user.addresses, role: user.role });
                             // res.status(200).json({ id: user.id, role: user.role });
                         }
@@ -130,13 +131,13 @@ passport.deserializeUser(function (user, cb) {
 
 
 // Express Middlewares
-// server.use(express.raw({ type: 'application/json' }));
 server.use(express.static('build'));
+// server.use(express.raw({ type: 'application/json' }));
+server.use(express.json());
 server.use(cookieParser());
 server.use(cors({
     exposedHeaders: ['X-Total-Count']
 }));
-server.use(express.json());
 
 
 // Routes
@@ -149,87 +150,24 @@ server.use('/cart', isAuth(), cartRoutes.routes);
 server.use('/orders', isAuth(), orderRoutes.routes);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // PAYMENTS
-const stripe = require("stripe")('sk_test_51PBYfMSG1m7bvcI2xtvlBqWwatEPNHXlYVr9j119g0jEsmQerF04aZeEegfxQ98ziOLrLLe2lQYgariBo3d2d0in00jQCZUHpU');
-
+const stripe = require("stripe")('sk_test_51OtmPySJmByaG9Y1S2HxatHDXy46WjoJQND468EqQBHUxYymyFbkutZx8FwHuW4z855xZ2T1Gdjkq8XQjYj1ZybS002D6k58eo');
 server.post("/create-payment-intent", async (req, res) => {
     const { totalAmount } = req.body;
 
-    // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
-        amount: totalAmount,
-        // amount: totalAmount * 100,
+        amount: totalAmount * 100,
         currency: "inr",
         automatic_payment_methods: {
             enabled: true,
         },
-        // payment_method: 'pm_card_visa',
+        // payment_method: 'pm_card_visa'
     });
 
     res.send({
         clientSecret: paymentIntent.client_secret,
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // WEBHOOK
@@ -246,57 +184,17 @@ server.post('/webhook', express.raw({ type: 'application/json' }), (request, res
         return;
     }
 
-    // Handle the event
     switch (event.type) {
         case 'payment_intent.succeeded':
             const paymentIntentSucceeded = event.data.object;
-            // Then define and call a function to handle the event payment_intent.succeeded
+            console.log({paymentIntentSucceeded});
             break;
-        // ... handle other event types
         default:
             console.log(`Unhandled event type ${event.type}`);
     }
 
-    // Return a 200 response to acknowledge receipt of the event
     response.send();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // DB CONNECT

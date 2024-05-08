@@ -7,10 +7,9 @@ import "../Stripe.css";
 import { useSelector } from "react-redux";
 import { selectCurrentOrder } from "../features/order/orderSlice";
 
+const stripePromise = loadStripe("pk_test_51OtmPySJmByaG9Y1sNs1LpZvNFLwQkgwxZfNUPrzSfd9yNmpV5TKQIhMRLpmz1WUNhJi9j1VqfGclbVp28J4Zdqu00pCOE2c14");
 
-const stripePromise = loadStripe("pk_test_51PBYfMSG1m7bvcI2lFSsx4trACxt6vOb08h9Yzxw9whQR4pp9f7bRdto5yq4xcDZ5XXBBosvR5al7ozVKkclBxJU003Z9fGqca");
-
-export default function StripeCheckout() {
+function StripeCheckout() {
     const [clientSecret, setClientSecret] = useState("");
     const currentOrder = useSelector(selectCurrentOrder);
 
@@ -19,14 +18,18 @@ export default function StripeCheckout() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ totalAmount: currentOrder.totalAmount }),
+            meta: {
+                order_id: currentOrder.id
+            }
         })
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
-    }, [currentOrder.totalAmount]);
+    }, [currentOrder]);
 
     const appearance = {
         theme: 'stripe',
     };
+
     const options = {
         clientSecret,
         appearance,
@@ -42,3 +45,5 @@ export default function StripeCheckout() {
         </div>
     );
 }
+
+export default StripeCheckout;
