@@ -67,7 +67,7 @@ exports.resetPasswordRequest = async (req, res) => {
         user.resetPasswordToken = token;
         await user.save();
 
-        const resetPageLink = "http://localhost:3000/reset-password?token=" + token + "&email=" + email;
+        const resetPageLink = "https://vendr-deployment.vercel.app/reset-password?token=" + token + "&email=" + email;
         const subject = "Reset your Vendr password";
         const text = "Reset your Vendr password";
         const html = `<p>Click <a href="${resetPageLink}">here</a> to reset your password</p>`;
