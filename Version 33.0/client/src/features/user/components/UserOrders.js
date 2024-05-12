@@ -59,10 +59,17 @@ export default function UserOrders() {
                                                         <p className="ml-4">${item.product.price - Math.round((item.product.price * item.product.discountPercentage / 100))}</p>
                                                     </div>
                                                     <p className="mt-1 text-sm text-gray-500">{item.product.brand[0].toUpperCase() + item.product.brand.slice(1)}</p>
+                                                    
                                                 </div>
                                                 <div className="flex flex-1 items-end justify-between text-sm">
                                                     <div className="text-gray-500">
-                                                        <label htmlFor="quantity" className="inline mr-5 text-sm font-medium leading-6 text-gray-900">Qty: {item.quantity}</label>
+                                                        <label htmlFor="quantity" className="inline text-sm font-medium leading-6 text-gray-900">Qty: {item.quantity}</label>
+                                                    </div>
+                                                    <div className="text-gray-500">
+                                                        <label htmlFor="quantity" className="inline text-sm font-medium leading-6 text-gray-900">{item.color && `Color: ${item.color.name}`}</label>
+                                                    </div>
+                                                    <div className="text-gray-500">
+                                                        <label htmlFor="quantity" className="inline text-sm font-medium leading-6 text-gray-900">{item.size && `Size: ${item.size.name}`}</label>
                                                     </div>
                                                 </div>
                                             </div>
