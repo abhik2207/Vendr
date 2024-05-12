@@ -28,7 +28,8 @@ function ProductForm() {
         { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400', id: 'gray' },
         { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900', id: 'black' },
         { name: 'Red', class: 'bg-red-500', selectedClass: 'ring-red-900', id: 'red' },
-        { name: 'Blue', class: 'bg-blue-500', selectedClass: 'ring-blue-900', id: 'blue' }
+        { name: 'Blue', class: 'bg-blue-500', selectedClass: 'ring-blue-900', id: 'blue' },
+        { name: '-', class: 'bg-white', selectedClass: 'ring-gray-400', id: 'std' }
     ];
 
     const sizes = [
@@ -38,7 +39,8 @@ function ProductForm() {
         { name: 'M', inStock: true, id: 'md' },
         { name: 'L', inStock: true, id: 'lg' },
         { name: 'XL', inStock: true, id: 'xl' },
-        { name: '2XL', inStock: true, id: 'xxl' }
+        { name: '2XL', inStock: true, id: 'xxl' },
+        { name: '-', inStock: true, id: 'std' }
     ];
     useEffect(() => {
         if (params.id) {

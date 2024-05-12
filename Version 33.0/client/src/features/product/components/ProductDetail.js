@@ -167,7 +167,8 @@ export default function ProductDetail() {
                             {/* Options */}
                             <div className="mt-4 lg:row-span-3 lg:mt-0">
                                 <h2 className="sr-only">Product information</h2>
-                                <p className="text-3xl tracking-tight text-gray-900">${product.price - Math.round((product.price * product.discountPercentage / 100))}</p>
+                                <p className="text-3xl tracking-tight font-bold text-gray-900">${product.price - Math.round((product.price * product.discountPercentage / 100))}</p>
+                                <p className="text-1xl line-through font-semibold tracking-tight text-gray-400">${product.price}</p>
 
                                 {/* Reviews */}
                                 <div className="mt-6">
