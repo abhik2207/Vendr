@@ -28,8 +28,8 @@ export const createQueryAsync = createAsyncThunk(
 
 export const fetchAllQueriesAsync = createAsyncThunk(
   'query/fetchAllQueries',
-  async (queryObject) => {
-    const response = await fetchAllQueries(queryObject);
+  async () => {
+    const response = await fetchAllQueries();
     return response.data;
   }
 );
@@ -64,5 +64,6 @@ export const querySlice = createSlice({
 export const { increment } = querySlice.actions;
 
 export const selectAllQueries = (state) => state.query.queries;
+export const selectTotalQueries = (state) => state.query.queries.length;
 
 export default querySlice.reducer;

@@ -6,11 +6,11 @@ export function fetchAllQueries() {
   });
 }
 
-export function createQuery(query) {
+export function createQuery(pagination) {
   return new Promise(async (resolve) => {
     const response = await fetch('/queries', {
       method: 'POST',
-      body: JSON.stringify(query),
+      body: JSON.stringify(pagination),
       headers: { 'content-type': 'application/json' }
     });
     const data = await response.json();
