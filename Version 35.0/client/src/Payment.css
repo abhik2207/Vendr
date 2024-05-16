@@ -1,0 +1,18 @@
+#payment-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+#payment-page h1 {
+    font-size: 1vmax;
+    margin-bottom: 2vmax;
+    font-weight: 600;
+}
+
+#payment-form {
+    width: 45%;
+}
