@@ -6233,6 +6233,21 @@
 							"propertyLabel": {
 								"$ref": "AAAAAAGPh+RlEPhVMxQ="
 							}
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGPikbXNZyEVWg=",
+							"_parent": {
+								"$ref": "AAAAAAGPh8NG2yaVJuc="
+							},
+							"font": "Arial;32;0",
+							"left": 4577,
+							"top": 4392,
+							"width": 330.0625,
+							"height": 44,
+							"autoResize": true,
+							"text": "USE CASE DIAGRAM",
+							"wordWrap": false
 						}
 					]
 				},

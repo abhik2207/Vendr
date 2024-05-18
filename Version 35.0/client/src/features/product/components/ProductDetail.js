@@ -102,8 +102,8 @@ export default function ProductDetail() {
                                     </li>
                                 ))}
                                 <li className="text-sm">
-                                    <a href={product.href} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">
-                                        {product.brand}
+                                    <a href={product.href} aria-current="page" className="font-bold text-2xl text-gray-500 hover:text-gray-600">
+                                        {product.brand[0].toUpperCase() + product.brand.slice(1)}
                                     </a>
                                 </li>
                             </ol>
