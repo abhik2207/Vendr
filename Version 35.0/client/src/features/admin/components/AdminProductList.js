@@ -397,7 +397,7 @@ function Pagination({ page, setPage, handlePage, totalItems }) {
           Previous
         </div>
         <div
-          onClick={(e) => handlePage(totalPages > page ? page + 1 : page)}
+          onClick={(e) => handlePage(page < totalPages ? page + 1 : page)}
           className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Next

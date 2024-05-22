@@ -90,7 +90,7 @@ export default function UserProfile() {
 
     return (
         <div>
-            <div className='flex flex-col min-h-screen w-full gap-5 py-5 px-2'>
+            <div className='flex flex-col min-h-screen w-full gap-5 py-5'>
 
                 {loadingStatus === 'loading' &&
                     <div className='w-full flex justify-center items-center'>

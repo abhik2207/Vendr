@@ -15,7 +15,7 @@ export default function UserOrders() {
 
     return (
         <div>
-            <div className='flex flex-col w-full gap-5 py-5 px-2'>
+            <div className='flex flex-col w-full gap-5 py-5'>
 
                 {loadingStatus === 'loading' &&
                     <div className='w-full flex justify-center items-center'>
@@ -35,7 +35,7 @@ export default function UserOrders() {
 
                 {orders && orders.map((order, index) => (
                     <div key={index} className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 bg-white rounded-lg'>
-                        <h2 className='text-4xl font-bold tracking-tight text-gray-900 pt-5 text-left'>Order number - #{order.id}</h2>
+                        <h2 className='text-[2vmax] font-bold tracking-tight text-gray-900 pt-5 text-left'>Order number - #{order.id}</h2>
                         <h4 className='text-xl font-bold tracking-tight text-red-600 mb-5 text-left'>Order status - {order.status[0].toUpperCase() + order.status.slice(1)}</h4>
                         <div className="border-t border-gray-200 py-6 sm:px-0">
                             <div className="flow-root">
