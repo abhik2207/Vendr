@@ -74,7 +74,6 @@ function AdminOrders() {
 
     useEffect(() => {
         const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-        console.log({ pagination });
         dispatch(fetchAllOrdersAsync({ sort, pagination }));
     }, [dispatch, page, sort]);
 
