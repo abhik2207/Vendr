@@ -54,7 +54,6 @@ const { isAuth, sanitizeUser, cookieExtractor } = require('./services/common');
 //         default:
 //             console.log(`Unhandled event type ${event.type}`);
 //     }
-
 //     response.send();
 // });
 
